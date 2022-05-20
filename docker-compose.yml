@@ -1,0 +1,34 @@
+version: "2.4"
+
+services:
+  app:
+    build:
+      context: .
+      target: app
+    ports:
+      - "127.0.0.1:8085:8085"
+    depends_on:
+      - db
+
+
+  db:
+    image: postgres:11
+    environment:
+      TZ: Europe/Minsk
+      POSTGRES_DB: db_test
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
+  dev:
+    build:
+      context: .
+      target: dev
+    depends_on:
+      - db
+
+
+volumes:
+  pgdata:
