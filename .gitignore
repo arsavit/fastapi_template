@@ -1,0 +1,7 @@
+.*
+__pycache__/
+
+
+!.pre-commit-config.yaml
+!.dockerignore
+!.gitignore
